@@ -1,0 +1,1246 @@
+<!DOCTYPE html>
+<html lang="my">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ConnectEd Pathways Hub Myanmar</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+:root {
+    --primary-color: #1a0529; /* Even darker purple as requested */
+    --secondary-color: #2c0842;
+    --accent-color: #e39900;
+    --light-color: #f8f9fa;
+    --dark-color: #0d0d0d;
+    --font-main: 'Pyidaungsu', 'Noto Sans Myanmar', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-main);
+    line-height: 1.6;
+    color: #333;
+    background-color: #f5f5f5;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header Styles */
+header {
+    background-color: var(--primary-color);
+    color: white;
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.logo i {
+    font-size: 1.8rem;
+    margin-right: 10px;
+    color: var(--accent-color);
+}
+
+.nav-menu {
+    display: flex;
+}
+
+.nav-menu li {
+    margin-left: 20px;
+}
+
+.nav-menu a {
+    padding: 8px 15px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.nav-menu a:hover {
+    background-color: var(--secondary-color);
+}
+
+.hamburger {
+    display: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+}
+
+.language-toggle {
+    display: flex;
+    margin-left: 20px;
+}
+
+.lang-btn {
+    background-color: transparent;
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 0.85rem;
+    font-weight: bold;
+}
+
+.lang-btn:first-child {
+    border-radius: 4px 0 0 4px;
+}
+
+.lang-btn:last-child {
+    border-radius: 0 4px 4px 0;
+}
+
+.lang-btn.active {
+    background-color: white;
+    color: var(--primary-color);
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(rgba(26, 5, 41, 0.95), rgba(26, 5, 41, 0.9)),
+                url('/api/placeholder/1200/800') center/cover no-repeat;
+    color: white;
+    text-align: center;
+    padding: 150px 20px 100px;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto 30px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 25px;
+    background-color: var(--accent-color);
+    color: var(--dark-color);
+    border-radius: 5px;
+    font-weight: bold;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #ff9921;
+    transform: translateY(-3px);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    border: 2px solid white;
+    color: white;
+    margin-left: 15px;
+}
+
+.btn-secondary:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Services Section */
+.services {
+    padding: 80px 0;
+    background-color: white;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 50px;
+    color: var(--primary-color);
+}
+
+.section-title h2 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+.section-title p {
+    max-width: 800px;
+    margin: 0 auto;
+    color: #666;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.service-card {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.service-icon {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+.service-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: var(--primary-color);
+}
+
+.service-card p {
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.service-link {
+    margin-top: 10px;
+    font-size: 0.9rem;
+}
+
+.service-link a {
+    color: var(--primary-color);
+    display: inline-flex;
+    align-items: center;
+    transition: all 0.3s;
+}
+
+.service-link a i {
+    margin-right: 5px;
+    color: #4267B2;
+}
+
+.service-link a:hover {
+    color: var(--accent-color);
+    text-decoration: underline;
+}
+
+/* About Section */
+.about {
+    padding: 80px 0;
+    background-color: #f5f5f5;
+}
+
+.about-content {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+.about-image {
+    flex: 1;
+    text-align: center;
+}
+
+.about-icon {
+    color: var(--primary-color);
+    background-color: rgba(74, 29, 102, 0.1);
+    width: 120px;
+    height: 120px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.about-text {
+    flex: 1;
+}
+
+.about-actions {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-top: 25px;
+}
+
+.about-text h2 {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+.about-text p {
+    margin-bottom: 20px;
+    color: #555;
+}
+
+/* CMKL Section */
+.cmkl {
+    padding: 80px 0;
+    background-color: white;
+}
+
+.cmkl-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.cmkl-logo {
+    margin-bottom: 30px;
+    color: var(--primary-color);
+}
+
+.cmkl-content h2 {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+.cmkl-content p {
+    max-width: 800px;
+    margin: 0 auto 30px;
+    color: #555;
+}
+
+.cmkl-actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.cmkl-scholarship-info {
+    background-color: rgba(74, 29, 102, 0.05);
+    border-radius: 8px;
+    padding: 15px 20px;
+    margin-top: 30px;
+    display: inline-block;
+}
+
+.cmkl-scholarship-info h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: var(--primary-color);
+}
+
+.cmkl-scholarship-info p {
+    margin: 0;
+    font-size: 0.95rem;
+}
+
+.cmkl-scholarship-info a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    background-color: #4267B2;
+    color: white;
+    border-radius: 50%;
+    margin-left: 8px;
+    font-size: 0.85rem;
+    transition: all 0.3s;
+}
+
+.cmkl-scholarship-info a:hover {
+    transform: scale(1.1);
+}
+
+/* CTA Section */
+.cta {
+    background: linear-gradient(rgba(26, 5, 41, 0.95), rgba(26, 5, 41, 0.9)),
+                url('/api/placeholder/1200/800') center/cover no-repeat;
+    color: white;
+    text-align: center;
+    padding: 100px 20px;
+}
+
+.cta h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.cta p {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto 30px;
+}
+
+/* Update Section */
+.updates {
+    padding: 80px 0;
+    background-color: #f5f5f5;
+}
+
+.updates-content {
+    text-align: center;
+}
+
+.updates-content h2 {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+.updates-content p {
+    max-width: 800px;
+    margin: 0 auto 30px;
+    color: #555;
+}
+
+.scholarship-links {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    padding: 20px;
+    margin: 30px 0;
+    text-align: left;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.scholarship-links h3 {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    color: var(--primary-color);
+}
+
+.scholarship-links ul {
+    list-style: none;
+    padding: 0;
+}
+
+.scholarship-links li {
+    margin-bottom: 10px;
+    padding-left: 20px;
+    position: relative;
+}
+
+.scholarship-links li:before {
+    content: "";
+    position: absolute;
+    left: 0;
+}
+
+.scholarship-links li i {
+    color: var(--accent-color);
+    margin-right: 8px;
+    width: 18px;
+    text-align: center;
+}
+
+.scholarship-links a {
+    color: var(--primary-color);
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.scholarship-links a:hover {
+    color: var(--secondary-color);
+    text-decoration: underline;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.social-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    transition: all 0.3s;
+}
+
+.social-links a:hover {
+    transform: translateY(-5px);
+    background-color: var(--secondary-color);
+}
+
+/* Contact Section */
+.contact {
+    padding: 80px 0;
+    background-color: white;
+}
+
+.contact-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 50px;
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-info h2 {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+.contact-info p {
+    margin-bottom: 20px;
+    color: #555;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.contact-icon {
+    width: 40px;
+    height: 40px;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+}
+
+.contact-form {
+    background-color: #f9f9f9;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.contact-form h3 {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-family: inherit;
+}
+
+textarea.form-control {
+    min-height: 150px;
+    resize: vertical;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.form-info {
+    background-color: rgba(74, 29, 102, 0.05);
+    padding: 12px 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+}
+
+.form-info a {
+    color: var(--primary-color);
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.form-info a:hover {
+    color: var(--accent-color);
+}
+
+.cta-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.hero-cta {
+    margin-bottom: 20px;
+}
+
+.hero-follow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.hero-follow p {
+    margin: 0 10px 0 0;
+    font-size: 0.9rem;
+}
+
+.social-badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background-color: #4267B2;
+    color: white;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    transition: all 0.3s;
+}
+
+.social-badge:hover {
+    transform: scale(1.1);
+    background-color: #365899;
+}
+
+/* Footer */
+footer {
+    background-color: var(--dark-color);
+    color: white;
+    padding: 50px 0 20px;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.footer-column h3 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: var(--accent-color);
+}
+
+.footer-column p {
+    margin-bottom: 15px;
+}
+
+.footer-links li {
+    margin-bottom: 10px;
+}
+
+.footer-links a {
+    transition: color 0.3s;
+}
+
+.footer-links a:hover {
+    color: var(--accent-color);
+}
+
+.copyright {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid #555;
+    color: #aaa;
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+    .about-content {
+        flex-direction: column;
+    }
+    
+    .about-image, .about-text {
+        flex: none;
+        width: 100%;
+    }
+    
+    .about-image {
+        margin-bottom: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-menu {
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        flex-direction: column;
+        background-color: var(--primary-color);
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        padding: 20px 0;
+    }
+    
+    .nav-menu.active {
+        left: 0;
+    }
+    
+    .nav-menu li {
+        margin: 15px 0;
+    }
+    
+    .hamburger {
+        display: block;
+    }
+    
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+    
+    .btn {
+        display: block;
+        width: 100%;
+        margin-bottom: 15px;
+    }
+    
+    .btn-secondary {
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 2rem;
+    }
+    
+    .section-title h2, .about-text h2, .cmkl-content h2, .cta h2, .updates-content h2, .contact-info h2 {
+        font-size: 2rem;
+    }
+    
+    .language-toggle {
+        position: absolute;
+        top: 15px;
+        right: 70px;
+    }
+}
+</style>
+</head>
+<body>
+<!-- Header Section -->
+<header>
+<div class="header-container">
+    <div class="logo">
+        <i class="fas fa-graduation-cap"></i>
+        <span>ConnectEd Pathways Hub Myanmar</span>
+    </div>
+    <ul class="nav-menu">
+        <li><a href="#home" data-en="Home" data-my="မူလစာမျက်နှာ">မူလစာမျက်နှာ</a></li>
+        <li><a href="#services" data-en="Services" data-my="ဝန်ဆောင်မှုများ">ဝန်ဆောင်မှုများ</a></li>
+        <li><a href="#about" data-en="About Us" data-my="ကျွန်ုပ်တို့အကြောင်း">ကျွန်ုပ်တို့အကြောင်း</a></li>
+        <li><a href="#cmkl" data-en="CMKL University" data-my="CMKL တက္ကသိုလ်">CMKL တက္ကသိုလ်</a></li>
+        <li><a href="#updates" data-en="Updates" data-my="သတင်းအပ်ဒိတ်များ">သတင်းအပ်ဒိတ်များ</a></li>
+        <li><a href="#contact" data-en="Contact" data-my="ဆက်သွယ်ရန်">ဆက်သွယ်ရန်</a></li>
+    </ul>
+    <div class="language-toggle">
+        <button type="button" class="lang-btn active" data-lang="my">MY</button>
+        <button type="button" class="lang-btn" data-lang="en">EN</button>
+    </div>
+    <div class="hamburger">
+        <i class="fas fa-bars"></i>
+    </div>
+</div>
+</header>
+
+<!-- Hero Section -->
+<section class="hero" id="home">
+<div id="particles-hero" class="particles-container"></div>
+<div class="container">
+    <h1 class="glow" data-en="New Opportunities for Myanmar Students" data-my="မြန်မာကျောင်းသားများအတွက် အခွင့်အလမ်းအသစ်များ">မြန်မာကျောင်းသားများအတွက် အခွင့်အလမ်းအသစ်များ</h1>
+    <p data-en="ConnectEd Pathways Hub Myanmar provides language courses, programming classes, and consulting services for Myanmar students looking to study in Thailand." data-my="ConnectEd Pathways Hub Myanmar သည် ထိုင်းနိုင်ငံတွင် ပညာသင်ကြားလိုသော မြန်မာကျောင်းသားများအတွက် ဘာသာစကားသင်တန်းများ၊ ပရိုဂရမ်မင်းသင်တန်းများနှင့် ဆွေးနွေးအကြံဉာဏ်ပေးခြင်းဝန်ဆောင်မှုများကို ပေးအပ်ပါသည်။">ConnectEd Pathways Hub Myanmar သည် ထိုင်းနိုင်ငံတွင် ပညာသင်ကြားလိုသော မြန်မာကျောင်းသားများအတွက် ဘာသာစကားသင်တန်းများ၊ ပရိုဂရမ်မင်းသင်တန်းများနှင့် ဆွေးနွေးအကြံဉာဏ်ပေးခြင်းဝန်ဆောင်မှုများကို ပေးအပ်ပါသည်။</p>
+    <div class="hero-cta">
+        <a href="https://forms.gle/w8s4QyzJWAh9Fa1F9" target="_blank" class="btn" data-en="Get Consulting" data-my="အတိုင်ပင်ခံဝန်ဆောင်မှု ရယူရန်">အတိုင်ပင်ခံဝန်ဆောင်မှု ရယူရန်</a>
+        <a href="#services" class="btn btn-secondary" data-en="Our Services" data-my="ဝန်ဆောင်မှုများအကြောင်း">ဝန်ဆောင်မှုများအကြောင်း</a>
+    </div>
+    <div class="hero-follow">
+        <p data-en="Follow us on Facebook" data-my="Facebook တွင် Follow လုပ်ပါ">Facebook တွင် Follow လုပ်ပါ</p>
+        <a href="https://www.facebook.com/61554757929281/" target="_blank" class="social-badge">
+            <i class="fab fa-facebook-f"></i>
+        </a>
+    </div>
+</div>
+</section>
+
+<!-- Services Section -->
+<section class="services" id="services">
+<div id="particles-services" class="particles-container"></div>
+<div class="container">
+    <div class="section-title">
+        <h2 class="glow" data-en="Our Services" data-my="ကျွန်ုပ်တို့၏ ဝန်ဆောင်မှုများ">ကျွန်ုပ်တို့၏ ဝန်ဆောင်မှုများ</h2>
+        <p data-en="We provide personalized educational services for students with highly qualified teachers." data-my="ကျောင်းသားများအတွက် အရည်အချင်းမြင့်မားသော ဆရာများဖြင့် တကိုယ်ရေတလုံးဆီ သင်ကြားပေးခြင်း ဝန်ဆောင်မှုများကို ကျွန်ုပ်တို့က ပေးဆောင်ပါသည်။">ကျောင်းသားများအတွက် အရည်အချင်းမြင့်မားသော ဆရာများဖြင့် တကိုယ်ရေတလုံးဆီ သင်ကြားပေးခြင်း ဝန်ဆောင်မှုများကို ကျွန်ုပ်တို့က ပေးဆောင်ပါသည်။</p>
+    </div>
+    <div class="services-grid">
+        <div class="service-card">
+            <div class="service-icon icon-glow">
+                <i class="fas fa-university floating"></i>
+            </div>
+            <h3 data-en="Educational Consulting Services" data-my="ပညာရေးဆိုင်ရာ အတိုင်ပင်ခံဝန်ဆောင်မှုများ">ပညာရေးဆိုင်ရာ အတိုင်ပင်ခံဝန်ဆောင်မှုများ</h3>
+            <p data-en="Guidance and advice for Myanmar students who want to study in Thailand, especially at CMKL University and other institutions." data-my="CMKL တက္ကသိုလ်အပါအဝင် ထိုင်းနိုင်ငံရှိ တက္ကသိုလ်များတွင် ပညာသင်ယူလိုသူများအတွက် လမ်းညွှန်မှုနှင့် အကြံဉာဏ်ပေးခြင်း ဝန်ဆောင်မှုများ။">CMKL တက္ကသိုလ်အပါအဝင် ထိုင်းနိုင်ငံရှိ တက္ကသိုလ်များတွင် ပညာသင်ယူလိုသူများအတွက် လမ်းညွှန်မှုနှင့် အကြံဉာဏ်ပေးခြင်း ဝန်ဆောင်မှုများ။</p>
+            <a href="https://forms.gle/w8s4QyzJWAh9Fa1F9" target="_blank" class="btn" data-en="Register for Consulting" data-my="အတိုင်ပင်ခံဝန်ဆောင်မှု စာရင်းသွင်းရန်">အတိုင်ပင်ခံဝန်ဆောင်မှု စာရင်းသွင်းရန်</a>
+            <p class="service-link"><a href="https://www.facebook.com/share/p/16FQBb1NSd/" target="_blank" data-en="Learn more" data-my="ပိုမိုလေ့လာရန်"><i class="fab fa-facebook"></i> ပိုမိုလေ့လာရန်</a></p>
+        </div>
+        <div class="service-card">
+            <div class="service-icon icon-glow">
+                <i class="fas fa-language floating"></i>
+            </div>
+            <h3 data-en="English Language Courses" data-my="အင်္ဂလိပ်ဘာသာစကား သင်တန်းများ">အင်္ဂလိပ်ဘာသာစကား သင်တန်းများ</h3>
+            <p data-en="Taught by experienced tutors with high IELTS and other English test scores." data-my="IELTS နှင့် အခြားအင်္ဂလိပ်ဘာသာစကားစစ်ဆေးမှုများတွင် အမှတ်မြင့်မားစွာ ရရှိထားသော အတွေ့အကြုံရှိ ဆရာများဖြင့် သင်ကြားပေးခြင်း။">IELTS နှင့် အခြားအင်္ဂလိပ်ဘာသာစကားစစ်ဆေးမှုများတွင် အမှတ်မြင့်မားစွာ ရရှိထားသော အတွေ့အကြုံရှိ ဆရာများဖြင့် သင်ကြားပေးခြင်း။</p>
+            <a href="#contact" class="btn" data-en="Enroll Now" data-my="စာရင်းသွင်းရန်">စာရင်းသွင်းရန်</a>
+            <p class="service-link"><a href="https://www.facebook.com/share/p/1BjTrPBEF1/" target="_blank" data-en="View details" data-my="အသေးစိတ်ကြည့်ရန်"><i class="fab fa-facebook"></i> အသေးစိတ်ကြည့်ရန်</a></p>
+        </div>
+        <div class="service-card">
+            <div class="service-icon icon-glow">
+                <i class="fas fa-globe-asia floating"></i>
+            </div>
+            <h3 data-en="Chinese Language Courses" data-my="တရုတ်ဘာသာစကား သင်တန်းများ">တရုတ်ဘာသာစကား သင်တန်းများ</h3>
+            <p data-en="Chinese language courses taught by native Chinese teachers." data-my="မိခင်ဘာသာစကားအဖြစ် ပြောဆိုသော တရုတ်ဆရာမများဖြင့် တရုတ်ဘာသာစကားသင်တန်းများ ဖွင့်လှစ်သင်ကြားပေးခြင်း။">မိခင်ဘာသာစကားအဖြစ် ပြောဆိုသော တရုတ်ဆရာမများဖြင့် တရုတ်ဘာသာစကားသင်တန်းများ ဖွင့်လှစ်သင်ကြားပေးခြင်း။</p>
+            <a href="#contact" class="btn" data-en="Enroll Now" data-my="စာရင်းသွင်းရန်">စာရင်းသွင်းရန်</a>
+            <p class="service-link"><a href="https://www.facebook.com/share/p/1EDXdMHJzn/" target="_blank" data-en="View details" data-my="အသေးစိတ်ကြည့်ရန်"><i class="fab fa-facebook"></i> အသေးစိတ်ကြည့်ရန်</a></p>
+        </div>
+        <div class="service-card">
+            <div class="service-icon icon-glow">
+                <i class="fas fa-laptop-code floating"></i>
+            </div>
+            <h3 data-en="Basic Programming Courses" data-my="ပရိုဂရမ်မင်း အခြေခံသင်တန်းများ">ပရိုဂရမ်မင်း အခြေခံသင်တန်းများ</h3>
+            <p data-en="Learn basic programming subjects to gain many opportunities in the modern tech world." data-my="ခေတ်မီ နည်းပညာလောကတွင် အခွင့်အလမ်းများစွာရရှိစေရန် အခြေခံပရိုဂရမ်မင်းဘာသာရပ်များကို သင်ကြားပေးခြင်း။">ခေတ်မီ နည်းပညာလောကတွင် အခွင့်အလမ်းများစွာရရှိစေရန် အခြေခံပရိုဂရမ်မင်းဘာသာရပ်များကို သင်ကြားပေးခြင်း။</p>
+            <a href="#contact" class="btn" data-en="Inquire Now" data-my="စုံစမ်းရန်">စုံစမ်းရန်</a>
+        </div>
+        <div class="service-card">
+            <div class="service-icon icon-glow">
+                <i class="fas fa-graduation-cap floating"></i>
+            </div>
+            <h3 data-en="GED Preparation Classes" data-my="GED ပြင်ဆင်ရေးသင်တန်းများ">GED ပြင်ဆင်ရေးသင်တန်းများ</h3>
+            <p data-en="Comprehensive preparation for the General Educational Development (GED) tests, opening doors to higher education opportunities worldwide." data-my="နိုင်ငံတကာပညာရေးအခွင့်အလမ်းများအတွက် တံခါးဖွင့်ပေးသော General Educational Development (GED) စာမေးပွဲများအတွက် အသေးစိတ်ပြင်ဆင်မှု။">နိုင်ငံတကာပညာရေးအခွင့်အလမ်းများအတွက် တံခါးဖွင့်ပေးသော General Educational Development (GED) စာမေးပွဲများအတွက် အသေးစိတ်ပြင်ဆင်မှု။</p>
+            <a href="#contact" class="btn" data-en="Enroll Now" data-my="စာရင်းသွင်းရန်">စာရင်းသွင်းရန်</a>
+        </div>
+    </div>
+</div>
+</section>
+
+<!-- About Section -->
+<section class="about" id="about">
+<div id="particles-about" class="particles-container"></div>
+<div class="container">
+    <div class="about-content">
+        <div class="about-image">
+            <div class="about-icon">
+                <i class="fas fa-users fa-4x floating"></i>
+            </div>
+        </div>
+        <div class="about-text">
+            <h2 class="glow" data-en="About ConnectEd Pathways Hub Myanmar" data-my="ကျွန်ုပ်တို့ ConnectEd Pathways Hub Myanmar အကြောင်း">ကျွန်ုပ်တို့ ConnectEd Pathways Hub Myanmar အကြောင်း</h2>
+            <p data-en="ConnectEd Pathways Hub Myanmar is an organization composed of teachers, professionals, and experienced individuals dedicated to the next generation. Our aim is to create world-class educational opportunities for Myanmar students." data-my="ConnectEd Pathways Hub Myanmar သည် အနာဂတ်မျိုးဆက်သစ်များအတွက် ဆရာများ၊ ပညာရှင်များနှင့် အတွေ့အကြုံရှိသူများဖြင့် ဖွဲ့စည်းထားသော အဖွဲ့အစည်းတစ်ခုဖြစ်ပါသည်။ ကျွန်ုပ်တို့၏ ရည်ရွယ်ချက်မှာ မြန်မာကျောင်းသားများအတွက် ကမ္ဘာ့အဆင့်မီ ပညာရေး အခွင့်အလမ်းများကို ဖန်တီးပေးရန်ဖြစ်ပါသည်။">ConnectEd Pathways Hub Myanmar သည် အနာဂတ်မျိုးဆက်သစ်များအတွက် ဆရာများ၊ ပညာရှင်များနှင့် အတွေ့အကြုံရှိသူများဖြင့် ဖွဲ့စည်းထားသော အဖွဲ့အစည်းတစ်ခုဖြစ်ပါသည်။ ကျွန်ုပ်တို့၏ ရည်ရွယ်ချက်မှာ မြန်မာကျောင်းသားများအတွက် ကမ္ဘာ့အဆင့်မီ ပညာရေး အခွင့်အလမ်းများကို ဖန်တီးပေးရန်ဖြစ်ပါသည်။</p>
+            <p data-en="We help Myanmar students by teaching the language skills, technical knowledge, and other important skills needed to study in Thailand." data-my="ကျွန်ုပ်တို့သည် မြန်မာကျောင်းသားများကို ထိုင်းနိုင်ငံတွင် ပညာသင်ကြားရန် လိုအပ်သော ဘာသာစကားကျွမ်းကျင်မှု၊ နည်းပညာအခြေခံဗဟုသုတများနှင့် အခြားအရေးပါသော ကျွမ်းကျင်မှုများကို သင်ကြားပေးခြင်းဖြင့် ကူညီပေးနေပါသည်။">ကျွန်ုပ်တို့သည် မြန်မာကျောင်းသားများကို ထိုင်းနိုင်ငံတွင် ပညာသင်ကြားရန် လိုအပ်သော ဘာသာစကားကျွမ်းကျင်မှု၊ နည်းပညာအခြေခံဗဟုသုတများနှင့် အခြားအရေးပါသော ကျွမ်းကျင်မှုများကို သင်ကြားပေးခြင်းဖြင့် ကူညီပေးနေပါသည်။</p>
+            <p data-en="Our teachers are experts in their respective fields and are always striving to provide the best education for students." data-my="ကျွန်ုပ်တို့၏ ဆရာ/ဆရာမများသည် မိမိတို့၏ နယ်ပယ်အသီးသီးတွင် ကျွမ်းကျင်တတ်မြောက်သူများဖြစ်ကြပြီး၊ ကျောင်းသားများကို အကောင်းဆုံး သင်ကြားပေးနိုင်ရန် အစဉ်ကြိုးပမ်းလျက်ရှိကြပါသည်။">ကျွန်ုပ်တို့၏ ဆရာ/ဆရာမများသည် မိမိတို့၏ နယ်ပယ်အသီးသီးတွင် ကျွမ်းကျင်တတ်မြောက်သူများဖြစ်ကြပြီး၊ ကျောင်းသားများကို အကောင်းဆုံး သင်ကြားပေးနိုင်ရန် အစဉ်ကြိုးပမ်းလျက်ရှိကြပါသည်။</p>
+            <div class="about-actions">
+                <a href="#contact" class="btn" data-en="Contact Us" data-my="ကျွန်ုပ်တို့နှင့် ဆက်သွယ်ပါ">ကျွန်ုပ်တို့နှင့် ဆက်သွယ်ပါ</a>
+                <a href="https://www.facebook.com/share/p/16FQBb1NSd/" target="_blank" class="btn btn-secondary" data-en="Our Services" data-my="ကျွန်ုပ်တို့၏ ဝန်ဆောင်မှုများ">ကျွန်ုပ်တို့၏ ဝန်ဆောင်မှုများ</a>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+
+<!-- CMKL University Section -->
+<section class="cmkl" id="cmkl">
+<div id="particles-cmkl" class="particles-container"></div>
+<div class="container">
+    <div class="cmkl-content">
+        <div class="cmkl-logo">
+            <i class="fas fa-university fa-3x floating"></i>
+        </div>
+        <h2 class="glow" data-en="Studying at CMKL University" data-my="CMKL တက္ကသိုလ်တွင် ပညာသင်ကြားခြင်း">CMKL တက္ကသိုလ်တွင် ပညာသင်ကြားခြင်း</h2>
+        <p data-en="CMKL University is a collaboration between the renowned Carnegie Mellon University and King Mongkut's Institute of Technology Ladkrabang in Thailand. It offers programs in technology, engineering, computer science, and digital technology." data-my="CMKL တက္ကသိုလ်သည် ထိုင်းနိုင်ငံတွင်ရှိသော နာမည်ကျော် Carnegie Mellon University နှင့် King Mongkut's Institute of Technology Ladkrabang တို့ ပူးပေါင်းဖွင့်လှစ်ထားသော တက္ကသိုလ်တစ်ခုဖြစ်ပါသည်။ ယင်းတွင် နည်းပညာ၊ အင်ဂျင်နီယာ၊ ကွန်ပျူတာသိပ္ပံ၊ ဒစ်ဂျစ်တယ်နည်းပညာ စသည့် ဘာသာရပ်များပါဝင်ပါသည်။">CMKL တက္ကသိုလ်သည် ထိုင်းနိုင်ငံတွင်ရှိသော နာမည်ကျော် Carnegie Mellon University နှင့် King Mongkut's Institute of Technology Ladkrabang တို့ ပူးပေါင်းဖွင့်လှစ်ထားသော တက္ကသိုလ်တစ်ခုဖြစ်ပါသည်။ ယင်းတွင် နည်းပညာ၊ အင်ဂျင်နီယာ၊ ကွန်ပျူတာသိပ္ပံ၊ ဒစ်ဂျစ်တယ်နည်းပညာ စသည့် ဘာသာရပ်များပါဝင်ပါသည်။</p>
+        <p data-en="We assist Myanmar students with scholarships and the necessary preparations to gain admission to CMKL University." data-my="ကျွန်ုပ်တို့သည် မြန်မာကျောင်းသားများအတွက် CMKL တက္ကသိုလ်တွင် ပညာသင်ဆုများနှင့် ဝင်ခွင့်ရရှိရန် လိုအပ်သော ပြင်ဆင်မှုများကို ကူညီပေးလျက်ရှိပါသည်။">ကျွန်ုပ်တို့သည် မြန်မာကျောင်းသားများအတွက် CMKL တက္ကသိုလ်တွင် ပညာသင်ဆုများနှင့် ဝင်ခွင့်ရရှိရန် လိုအပ်သော ပြင်ဆင်မှုများကို ကူညီပေးလျက်ရှိပါသည်။</p>
+        <div class="cmkl-actions">
+            <a href="https://forms.gle/w8s4QyzJWAh9Fa1F9" target="_blank" class="btn" data-en="Schedule a Consultation" data-my="တိုင်ပင်ဆွေးနွေးရန် ရက်ချိန်းယူပါ">တိုင်ပင်ဆွေးနွေးရန် ရက်ချိန်းယူပါ</a>
+            <a href="https://www.facebook.com/61554757929281/posts/122115733994158597/" target="_blank" class="btn btn-secondary" data-en="Learn About CMKL" data-my="CMKL တက္ကသိုလ်အကြောင်း ပိုမိုသိရှိရန်">CMKL တက္ကသိုလ်အကြောင်း ပိုမိုသိရှိရန်</a>
+        </div>
+        <div class="cmkl-scholarship-info">
+            <h3 data-en="CMKL Scholarships Available" data-my="CMKL ပညာသင်ဆုများ ရရှိနိုင်ပါသည်">CMKL ပညာသင်ဆုများ ရရှိနိုင်ပါသည်</h3>
+            <p data-en="View full scholarship details" data-my="ပညာသင်ဆု အသေးစိတ်အချက်အလက်များ ကြည့်ရှုရန်">ပညာသင်ဆု အသေးစိတ်အချက်အလက်များ ကြည့်ရှုရန် <a href="https://www.facebook.com/61554757929281/posts/122118101732158597/" target="_blank"><i class="fab fa-facebook"></i></a></p>
+        </div>
+    </div>
+</div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta" id="cta">
+<div id="particles-cta" class="particles-container"></div>
+<div class="container">
+    <h2 class="glow" data-en="Start Your Educational Journey Today" data-my="သင့်ရဲ့ ပညာရေးခရီးကို ယနေ့စတင်လိုက်ပါ">သင့်ရဲ့ ပညာရေးခရီးကို ယနေ့စတင်လိုက်ပါ</h2>
+    <p data-en="If you have any questions about our services or want to register, contact us now." data-my="ကျွန်ုပ်တို့၏ ဝန်ဆောင်မှုများနှင့် ပတ်သက်၍ မေးမြန်းလိုသည်များရှိပါက သို့မဟုတ် စာရင်းသွင်းလိုပါက ယခုပင် ဆက်သွယ်ပါ။">ကျွန်ုပ်တို့၏ ဝန်ဆောင်မှုများနှင့် ပတ်သက်၍ မေးမြန်းလိုသည်များရှိပါက သို့မဟုတ် စာရင်းသွင်းလိုပါက ယခုပင် ဆက်သွယ်ပါ။</p>
+    <div class="cta-buttons">
+        <a href="https://forms.gle/w8s4QyzJWAh9Fa1F9" target="_blank" class="btn" data-en="Get Consulting" data-my="တိုင်ပင်ဆွေးနွေးမှု ရယူရန်">တိုင်ပင်ဆွေးနွေးမှု ရယူရန်</a>
+        <a href="#contact" class="btn" data-en="Register for Courses" data-my="သင်တန်းများအတွက် စာရင်းသွင်းရန်">သင်တန်းများအတွက် စာရင်းသွင်းရန်</a>
+        <a href="https://www.facebook.com/61554757929281/" target="_blank" class="btn btn-secondary" data-en="Follow on Facebook" data-my="Facebook တွင် Follow လုပ်ရန်">Facebook တွင် Follow လုပ်ရန်</a>
+    </div>
+</div>
+</section>
+
+<!-- Updates Section -->
+<section class="updates" id="updates">
+<div id="particles-updates" class="particles-container"></div>
+<div class="container">
+    <div class="updates-content">
+        <h2 class="glow" data-en="Educational Updates and Scholarship Opportunities" data-my="ပညာရေးဆိုင်ရာ သတင်းအပ်ဒိတ်များနှင့် ပညာသင်ဆုအခွင့်အလမ်းများ">ပညာရေးဆိုင်ရာ သတင်းအပ်ဒိတ်များနှင့် ပညာသင်ဆုအခွင့်အလမ်းများ</h2>
+        <p data-en="Follow our Facebook page for the latest scholarship news, educational updates, and other opportunities." data-my="နောက်ဆုံးရ ပညာသင်ဆုသတင်းများ၊ ပညာရေးဆိုင်ရာ အပ်ဒိတ်များနှင့် အခြားအခွင့်အလမ်းများကို မျှဝေရန် ကျွန်ုပ်တို့၏ Facebook စာမျက်နှာကို Follow လုပ်ထားပါ။">နောက်ဆုံးရ ပညာသင်ဆုသတင်းများ၊ ပညာရေးဆိုင်ရာ အပ်ဒိတ်များနှင့် အခြားအခွင့်အလမ်းများကို မျှဝေရန် ကျွန်ုပ်တို့၏ Facebook စာမျက်နှာကို Follow လုပ်ထားပါ။</p>
+        
+        <div class="scholarship-links">
+            <h3 data-en="Latest Information" data-my="နောက်ဆုံးရ အချက်အလက်များ">နောက်ဆုံးရ အချက်အလက်များ</h3>
+            <ul>
+                <li><a href="https://www.facebook.com/61554757929281/posts/122112207440158597/" target="_blank" data-en="Private Universities in Thailand" data-my="ထိုင်းနိုင်ငံရဲ့ private ကျောင်းတွေ အကြောင်း"><i class="fas fa-school"></i> ထိုင်းနိုင်ငံရဲ့ private ကျောင်းတွေ အကြောင်း</a></li>
+                <li><a href="https://www.facebook.com/61554757929281/posts/122113738610158597/" target="_blank" data-en="Thai Public Universities" data-my="Thai Public ကျောင်းတွေ အကြောင်း"><i class="fas fa-university"></i> Thai Public ကျောင်းတွေ အကြောင်း</a></li>
+                <li><a href="https://www.facebook.com/61554757929281/posts/122115733994158597/" target="_blank" data-en="About CMKL University" data-my="CMKL ကျောင်းရဲ့ အကြောင်း"><i class="fas fa-graduation-cap"></i> CMKL ကျောင်းရဲ့ အကြောင်း</a></li>
+                <li><a href="https://www.facebook.com/61554757929281/posts/122118101732158597/" target="_blank" data-en="CMKL Scholarships" data-my="CMKL scholarship အပြည့်အစုံ"><i class="fas fa-award"></i> CMKL scholarship အပြည့်အစုံ</a></li>
+                <li><a href="https://www.facebook.com/61554757929281/posts" target="_blank" data-en="Turkey Scholarship" data-my="Turkey Scholarship"><i class="fas fa-globe-europe"></i> Turkey Scholarship</a></li>
+                <li><a href="https://www.facebook.com/61554757929281/posts/122126553362158597/" target="_blank" data-en="CSC Scholarships" data-my="CSC scholarships"><i class="fas fa-certificate"></i> CSC scholarships</a></li>
+                <li><a href="https://www.facebook.com/61554757929281/posts/122129699426158597/" target="_blank" data-en="Hubei Province Scholarship" data-my="Hubei Province Scholarship"><i class="fas fa-bookmark"></i> Hubei Province Scholarship</a></li>
+                <li><a href="https://www.facebook.com/61554757929281/posts/122138918042158597/" target="_blank" data-en="German Ausbildung" data-my="German Ausbildung"><i class="fas fa-briefcase"></i> German Ausbildung</a></li>
+            </ul>
+        </div>
+        
+        <div class="social-links">
+            <a href="https://www.facebook.com/61554757929281/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        </div>
+    </div>
+</div>
+</section>
+
+<!-- Contact Section -->
+<section class="contact" id="contact">
+<div id="particles-contact" class="particles-container"></div>
+<div class="container">
+    <div class="section-title">
+        <h2 class="glow" data-en="Contact Us" data-my="ကျွန်ုပ်တို့နှင့် ဆက်သွယ်ရန်">ကျွန်ုပ်တို့နှင့် ဆက်သွယ်ရန်</h2>
+        <p data-en="If you have any questions or would like to register for any service, you can contact us through the following methods." data-my="မေးမြန်းလိုသည်များရှိပါက သို့မဟုတ် ဝန်ဆောင်မှုတစ်ခုခုအတွက် စာရင်းသွင်းလိုပါက အောက်ပါနည်းလမ်းများဖြင့် ဆက်သွယ်နိုင်ပါသည်။">မေးမြန်းလိုသည်များရှိပါက သို့မဟုတ် ဝန်ဆောင်မှုတစ်ခုခုအတွက် စာရင်းသွင်းလိုပါက အောက်ပါနည်းလမ်းများဖြင့် ဆက်သွယ်နိုင်ပါသည်။</p>
+    </div>
+    <div class="contact-content">
+        <div class="contact-info">
+            <div class="contact-item">
+                <div class="contact-icon">
+                    <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <div>
+                    <h4 data-en="Address" data-my="လိပ်စာ">လိပ်စာ</h4>
+                    <p data-en="123, Central Road, Yangon, Myanmar" data-my="၁၂၃၊ ဗဟိုလမ်း၊ ရန်ကုန်မြို့၊ မြန်မာနိုင်ငံ">၁၂၃၊ ဗဟိုလမ်း၊ ရန်ကုန်မြို့၊ မြန်မာနိုင်ငံ</p>
+                </div>
+            </div>
+            <div class="contact-item">
+                <div class="contact-icon">
+                    <i class="fas fa-phone"></i>
+                </div>
+                <div>
+                    <h4 data-en="Phone Number" data-my="ဖုန်းနံပါတ်">ဖုန်းနံပါတ်</h4>
+                    <p>+95 9 123 456 789</p>
+                </div>
+            </div>
+            <div class="contact-item">
+                <div class="contact-icon">
+                    <i class="fas fa-envelope"></i>
+                </div>
+                <div>
+                    <h4 data-en="Email" data-my="အီးမေးလ်">အီးမေးလ်</h4>
+                    <p>info@connectedpathways.mm</p>
+                </div>
+            </div>
+            <div class="contact-item">
+                <div class="contact-icon">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <div>
+                    <h4 data-en="Opening Hours" data-my="ဖွင့်ချိန်">ဖွင့်ချိန်</h4>
+                    <p data-en="Monday - Friday: 9 AM - 5 PM" data-my="တနင်္လာ - သောကြာ: နံနက် ၉ နာရီ - ညနေ ၅ နာရီ">တနင်္လာ - သောကြာ: နံနက် ၉ နာရီ - ညနေ ၅ နာရီ</p>
+                    <p data-en="Saturday: 9 AM - 12 PM" data-my="စနေ: နံနက် ၉ နာရီ - နေ့လည် ၁၂ နာရီ">စနေ: နံနက် ၉ နာရီ - နေ့လည် ၁၂ နာရီ</p>
+                </div>
+            </div>
+        </div>
+        <div class="contact-form">
+            <h3 data-en="Inquiry Form" data-my="စုံစမ်းရန် ပုံစံ">စုံစမ်းရန် ပုံစံ</h3>
+            <p data-en="Fill out this form to inquire about our services or register for courses." data-my="ကျွန်ုပ်တို့၏ ဝန်ဆောင်မှုများအကြောင်း စုံစမ်းရန် သို့မဟုတ် သင်တန်းများအတွက် စာရင်းသွင်းရန် ဤပုံစံကို ဖြည့်စွက်ပါ။">ကျွန်ုပ်တို့၏ ဝန်ဆောင်မှုများအကြောင်း စုံစမ်းရန် သို့မဟုတ် သင်တန်းများအတွက် စာရင်းသွင်းရန် ဤပုံစံကို ဖြည့်စွက်ပါ။</p>
+            <div class="form-info">
+                <p data-en="For educational consulting, please use our" data-my="ပညာရေးဆိုင်ရာ အကြံဉာဏ်ပေးခြင်းအတွက်၊ ကျေးဇူးပြု၍ ကျွန်ုပ်တို့၏">ပညာရေးဆိုင်ရာ အကြံဉာဏ်ပေးခြင်းအတွက်၊ ကျေးဇူးပြု၍ ကျွန်ုပ်တို့၏ <a href="https://forms.gle/w8s4QyzJWAh9Fa1F9" target="_blank" data-en="specialized registration form" data-my="အထူးစာရင်းသွင်းပုံစံ">အထူးစာရင်းသွင်းပုံစံ</a> ကို အသုံးပြုပါ။</p>
+            </div>
+            <form id="contactForm">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="သင့်အမည်" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" class="form-control" placeholder="သင့်အီးမေးလ်" required>
+                </div>
+                <div class="form-group">
+                    <input type="tel" class="form-control" placeholder="သင့်ဖုန်းနံပါတ်" required>
+                </div>
+                <div class="form-group">
+                    <select class="form-control" required>
+                        <option value="" selected disabled>စိတ်ဝင်စားသော ဝန်ဆောင်မှု</option>
+                        <option value="english">အင်္ဂလိပ်ဘာသာစကား သင်တန်း</option>
+                        <option value="chinese">တရုတ်ဘာသာစကား သင်တန်း</option>
+                        <option value="programming">ပရိုဂရမ်မင်း သင်တန်း</option>
+                        <option value="ged">GED ပြင်ဆင်ရေး သင်တန်း</option>
+                        <option value="other">အခြား</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <textarea class="form-control" placeholder="သင့်မေးခွန်း သို့မဟုတ် မှတ်ချက်" required></textarea>
+                </div>
+                <button type="submit" class="btn" data-en="Submit" data-my="ပေးပို့ရန်">ပေးပို့ရန်</button>
+            </form>
+        </div>
+    </div>
+</div>
+</section>
+
+<!-- Footer -->
+<footer>
+<div class="container">
+    <div class="footer-content">
+        <div class="footer-column">
+            <h3 data-en="ConnectEd Pathways Hub Myanmar" data-my="ConnectEd Pathways Hub Myanmar">ConnectEd Pathways Hub Myanmar</h3>
+            <p data-en="Creating opportunities for Myanmar students." data-my="မြန်မာကျောင်းသားများအတွက် အခွင့်အလမ်းများ ဖန်တီးပေးလျက်ရှိပါသည်။">မြန်မာကျောင်းသားများအတွက် အခွင့်အလမ်းများ ဖန်တီးပေးလျက်ရှိပါသည်။</p>
+            <div class="social-links">
+                <a href="https://www.facebook.com/61554757929281/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-telegram"></i></a>
+            </div>
+        </div>
+        <div class="footer-column">
+            <h3 data-en="Services" data-my="ဝန်ဆောင်မှုများ">ဝန်ဆောင်မှုများ</h3>
+            <ul class="footer-links">
+                <li><a href="#services" data-en="English Language Courses" data-my="အင်္ဂလိပ်ဘာသာစကား သင်တန်းများ">အင်္ဂလိပ်ဘာသာစကား သင်တန်းများ</a></li>
+                <li><a href="#services" data-en="Chinese Language Courses" data-my="တရုတ်ဘာသာစကား သင်တန်းများ">တရုတ်ဘာသာစကား သင်တန်းများ</a></li>
+                <li><a href="#services" data-en="Basic Programming Courses" data-my="ပရိုဂရမ်မင်း အခြေခံသင်တန်းများ">ပရိုဂရမ်မင်း အခြေခံသင်တန်းများ</a></li>
+                <li><a href="#services" data-en="Educational Consulting" data-my="ပညာရေးဆိုင်ရာ ဆွေးနွေးအကြံပေးခြင်း">ပညာရေးဆိုင်ရာ ဆွေးနွေးအကြံပေးခြင်း</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h3 data-en="Useful Links" data-my="အသုံးဝင်သော လင့်ခ်များ">အသုံးဝင်သော လင့်ခ်များ</h3>
+            <ul class="footer-links">
+                <li><a href="#about" data-en="About Us" data-my="ကျွန်ုပ်တို့အကြောင်း">ကျွန်ုပ်တို့အကြောင်း</a></li>
+                <li><a href="#cmkl" data-en="CMKL University" data-my="CMKL တက္ကသိုလ်">CMKL တက္ကသိုလ်</a></li>
+                <li><a href="#updates" data-en="Educational News" data-my="ပညာရေးသတင်းများ">ပညာရေးသတင်းများ</a></li>
+                <li><a href="#" data-en="Privacy Policy" data-my="ပုဂ္ဂိုလ်ရေးဆိုင်ရာ မူဝါဒ">ပုဂ္ဂိုလ်ရေးဆိုင်ရာ မူဝါဒ</a></li>
+                <li><a href="#" data-en="Terms and Conditions" data-my="စည်းကမ်းချက်များ">စည်းကမ်းချက်များ</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h3 data-en="Contact" data-my="ဆက်သွယ်ရန်">ဆက်သွယ်ရန်</h3>
+            <p data-en="123, Central Road, Yangon, Myanmar" data-my="၁၂၃၊ ဗဟိုလမ်း၊ ရန်ကုန်မြို့၊ မြန်မာနိုင်ငံ"><i class="fas fa-map-marker-alt"></i> ၁၂၃၊ ဗဟိုလမ်း၊ ရန်ကုန်မြို့၊ မြန်မာနိုင်ငံ</p>
+            <p><i class="fas fa-phone"></i> +95 9 123 456 789</p>
+            <p><i class="fas fa-envelope"></i> info@connectedpathways.mm</p>
+        </div>
+    </div>
+    <div class="copyright">
+        <p data-en="&copy; 2025 ConnectEd Pathways Hub Myanmar. All rights reserved." data-my="&copy; 2025 ConnectEd Pathways Hub Myanmar. မူပိုင်ခွင့်အားလုံး ထိန်းသိမ်းပြီးဖြစ်ပါသည်။">&copy; 2025 ConnectEd Pathways Hub Myanmar. မူပိုင်ခွင့်အားလုံး ထိန်းသိမ်းပြီးဖြစ်ပါသည်။</p>
+    </div>
+</div>
+</footer>
+
+<!-- JavaScript -->
+<script>
+// Mobile Menu Toggle
+const hamburger = document.querySelector('.hamburger');
+const navMenu = document.querySelector('.nav-menu');
+
+hamburger.addEventListener('click', () => {
+    navMenu.classList.toggle('active');
+});
+
+// Smooth Scrolling
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        navMenu.classList.remove('active');
+        
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+        });
+    });
+});
+
+// Language Toggle Functionality
+const langBtns = document.querySelectorAll('.lang-btn');
+let currentLang = 'my'; // Default language is Burmese
+
+// Function to switch language
+function switchLanguage(lang) {
+    currentLang = lang;
+    
+    // Update active button
+    langBtns.forEach(btn => {
+        if (btn.dataset.lang === lang) {
+            btn.classList.add('active');
+        } else {
+            btn.classList.remove('active');
+        }
+    });
+    
+    // Update all elements with data-en and data-my attributes
+    document.querySelectorAll('[data-en][data-my]').forEach(el => {
+        el.textContent = el.dataset[lang];
+    });
+    
+    // Update form placeholders if needed
+    if (lang === 'en') {
+        const nameInput = document.querySelector('input[placeholder="သင့်အမည်"]');
+        if (nameInput) nameInput.placeholder = "Your Name";
+        
+        const emailInput = document.querySelector('input[placeholder="သင့်အီးမေးလ်"]');
+        if (emailInput) emailInput.placeholder = "Your Email";
+        
+        const phoneInput = document.querySelector('input[placeholder="သင့်ဖုန်းနံပါတ်"]');
+        if (phoneInput) phoneInput.placeholder = "Your Phone Number";
+        
+        const commentArea = document.querySelector('textarea[placeholder="သင့်မေးခွန်း သို့မဟုတ် မှတ်ချက်"]');
+        if (commentArea) commentArea.placeholder = "Your Question or Comment";
+        
+        const serviceOption = document.querySelector('option[value=""][selected]');
+        if (serviceOption) serviceOption.textContent = "Select a Service";
+        
+        const englishOption = document.querySelector('option[value="english"]');
+        if (englishOption) englishOption.textContent = "English Language Courses";
+        
+        const chineseOption = document.querySelector('option[value="chinese"]');
+        if (chineseOption) chineseOption.textContent = "Chinese Language Courses";
+        
+        const programmingOption = document.querySelector('option[value="programming"]');
+        if (programmingOption) programmingOption.textContent = "Programming Courses";
+        
+        const gedOption = document.querySelector('option[value="ged"]');
+        if (gedOption) gedOption.textContent = "GED Preparation Classes";
+        
+        const otherOption = document.querySelector('option[value="other"]');
+        if (otherOption) otherOption.textContent = "Other";
+    } else {
+        const nameInput = document.querySelector('input[placeholder="Your Name"]');
+        if (nameInput) nameInput.placeholder = "သင့်အမည်";
+        
+        const emailInput = document.querySelector('input[placeholder="Your Email"]');
+        if (emailInput) emailInput.placeholder = "သင့်အီးမေးလ်";
+        
+        const phoneInput = document.querySelector('input[placeholder="Your Phone Number"]');
+        if (phoneInput) phoneInput.placeholder = "သင့်ဖုန်းနံပါတ်";
+        
+        const commentArea = document.querySelector('textarea[placeholder="Your Question or Comment"]');
+        if (commentArea) commentArea.placeholder = "သင့်မေးခွန်း သို့မဟုတ် မှတ်ချက်";
+        
+        const serviceOption = document.querySelector('option[value=""][selected]');
+        if (serviceOption) serviceOption.textContent = "စိတ်ဝင်စားသော ဝန်ဆောင်မှု";
+        
+        const englishOption = document.querySelector('option[value="english"]');
+        if (englishOption) englishOption.textContent = "အင်္ဂလိပ်ဘာသာစကား သင်တန်း";
+        
+        const chineseOption = document.querySelector('option[value="chinese"]');
+        if (chineseOption) chineseOption.textContent = "တရုတ်ဘာသာစကား သင်တန်း";
+        
+        const programmingOption = document.querySelector('option[value="programming"]');
+        if (programmingOption) programmingOption.textContent = "ပရိုဂရမ်မင်း သင်တန်း";
+        
+        const gedOption = document.querySelector('option[value="ged"]');
+        if (gedOption) gedOption.textContent = "GED ပြင်ဆင်ရေး သင်တန်း";
+        
+        const otherOption = document.querySelector('option[value="other"]');
+        if (otherOption) otherOption.textContent = "အခြား";
+    }
+    
+    // Set HTML lang attribute
+    document.documentElement.lang = lang;
+}
+
+// Event listeners for language buttons
+langBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        const lang = btn.dataset.lang;
+        if (lang !== currentLang) {
+            switchLanguage(lang);
+        }
+    });
+});
+
+// Form Submission
+const contactForm = document.getElementById('contactForm');
+
+if (contactForm) {
+    contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Form data collection
+        const formData = new FormData(this);
+        const formObject = {};
+        
+        formData.forEach((value, key) => {
+            formObject[key] = value;
+        });
+        
+        // Here you would typically send the data to your backend
+        // For demonstration, we'll just show an alert
+        const successMessage = currentLang === 'my' 
+            ? 'သင့်စုံစမ်းမှုကို လက်ခံရရှိပါပြီ။ မကြာမီ ပြန်လည်ဆက်သွယ်ပါမည်။'
+            : 'Your inquiry has been received. We will contact you soon.';
+            
+        alert(successMessage);
+        contactForm.reset();
+    });
+}
+
+// For demonstration purposes - this would be connected to a real backend in production
+function submitForm(formData) {
+    // Backend submission would go here
+    console.log("Form submitted:", formData);
+    
+    // Simulating server response
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            const message = currentLang === 'my' 
+                ? "သင့်စုံစမ်းမှုကို လက်ခံရရှိပါပြီ။" 
+                : "Your inquiry has been received.";
+            resolve({ success: true, message: message });
+        }, 1000);
+    });
+}
+</script>
+</body>
+</html>
