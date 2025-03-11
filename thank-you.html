@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="my">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thank You - ConnectEd Pathways Hub Myanmar</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+:root {
+    --primary-color: #1a0529;
+    --secondary-color: #2c0842;
+    --accent-color: #e39900;
+    --light-color: #f8f9fa;
+    --dark-color: #0d0d0d;
+    --font-main: 'Pyidaungsu', 'Noto Sans Myanmar', 'Arial', sans-serif;
+    --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-main);
+    line-height: 1.6;
+    color: #333;
+    background-color: #f9f9f9;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.thank-you-container {
+    max-width: 800px;
+    margin: 100px auto;
+    padding: 50px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: var(--box-shadow);
+    text-align: center;
+}
+
+.thank-you-container h1 {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 30px;
+}
+
+.thank-you-container p {
+    margin-bottom: 20px;
+    color: #555;
+    font-size: 1.1rem;
+    line-height: 1.7;
+}
+
+.thank-you-container strong {
+    font-size: 1.2rem;
+    color: var(--primary-color);
+    display: block;
+    margin-bottom: 30px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 25px;
+    background-color: var(--accent-color);
+    color: var(--dark-color);
+    border-radius: 5px;
+    font-weight: bold;
+    transition: var(--transition);
+    cursor: pointer;
+    border: none;
+    outline: none;
+    margin-top: 20px;
+}
+
+.btn:hover {
+    background-color: #ffb133;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+.success-icon {
+    font-size: 4rem;
+    color: #28a745;
+    margin-bottom: 20px;
+}
+</style>
+</head>
+<body>
+<div class="thank-you-container">
+    <i class="fas fa-check-circle success-icon"></i>
+    <h1 data-en="Thank You for Your Message!" data-my="သင့်မက်ဆေ့ဂျ်အတွက် ကျေးဇူးတင်ပါသည်!">Thank You for Your Message!</h1>
+    
+    <p data-en="We have received your inquiry and will get back to you as soon as possible." data-my="သင့်ရဲ့စုံစမ်းမေးမြန်းမှုကို ကျွန်ုပ်တို့ လက်ခံရရှိပြီးဖြစ်ပါသည်။ မကြာမီ ပြန်လည်ဆက်သွယ်ပါမည်။">We have received your inquiry and will get back to you as soon as possible.</p>
+    
+    <p data-en="If your matter is urgent, please feel free to email us directly at:" data-my="အရေးကြီးကိစ္စဖြစ်ပါက အောက်ပါအီးမေးလ်သို့ တိုက်ရိုက်ဆက်သွယ်နိုင်ပါသည်:">If your matter is urgent, please feel free to email us directly at:</p>
+    
+    <strong>connected.edumm@gmail.com</strong>
+    
+    <a href="index.html" class="btn" data-en="Return to Home" data-my="မူလစာမျက်နှာသို့ ပြန်သွားရန်">Return to Home</a>
+</div>
+
+<script>
+// Language Toggle Functionality
+const langBtns = document.querySelectorAll('.lang-btn');
+let currentLang = 'my'; // Default language is Burmese
+
+// Function to switch language
+function switchLanguage(lang) {
+    currentLang = lang;
+    
+    // Update all elements with data-en and data-my attributes
+    document.querySelectorAll('[data-en][data-my]').forEach(el => {
+        el.textContent = el.dataset[lang];
+    });
+    
+    // Set HTML lang attribute
+    document.documentElement.lang = lang;
+}
+
+// Check URL parameter for language
+const urlParams = new URLSearchParams(window.location.search);
+const langParam = urlParams.get('lang');
+if (langParam && (langParam === 'en' || langParam === 'my')) {
+    switchLanguage(langParam);
+}
+</script>
+</body>
+</html>
